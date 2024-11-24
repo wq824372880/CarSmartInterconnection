@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.zeekrlife.carlink.ui.viewmodel.PinViewModel" />
+        <import type="com.zeekrlife.carlink.data.PageType"/>
+        <import type="android.view.View"/>
+        <import type="androidx.databinding.ObservableField"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        >
+
+        <RelativeLayout
+            android:id="@+id/loadingLayout"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/loadingContentTV"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_chainStyle="packed">
+
+            <ImageView
+                android:id="@+id/loadingIV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/loading_0"
+                android:layout_centerInParent="true" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/loadingContentTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{vm.getLoadingContentString()}"
+            android:layout_marginTop="72dp"
+            android:textColor="@color/primary"
+            android:textSize="48sp"
+            app:layout_constraintStart_toStartOf="@+id/loadingLayout"
+            app:layout_constraintEnd_toEndOf="@id/loadingLayout"
+            app:layout_constraintBottom_toTopOf="@id/loadingNoticeTV"
+            app:layout_constraintTop_toBottomOf="@id/loadingLayout" />
+
+        <TextView
+            android:id="@+id/loadingNoticeTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{vm.getLoadingNoticeString()}"
+            android:layout_marginTop="102dp"
+            android:textColor="@color/primary"
+            android:textSize="32sp"
+            android:visibility="@{(vm.pageType == PageType.BLUETOOTHl_TURN_ON || vm.pageType == PageType.CONNECTION_CODE_GET) ? View.VISIBLE : View.INVISIBLE }"
+            app:layout_constraintStart_toStartOf="@+id/loadingLayout"
+            app:layout_constraintEnd_toEndOf="@id/loadingLayout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/loadingContentTV" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

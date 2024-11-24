@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.zeekrlife.connect.base">
+    <queries>
+        <package android:name="com.zeekrlife.connect.core" />
+        <package android:name="com.zeekrlife.connect.core.ConnectService" />
+        <intent>
+            <action android:name="zeekrlife.intent.action.INTERCONNECT_SERVICE_START" />
+        </intent>
+    </queries>
+    <uses-permission android:name="zeekrlife.permission.INTERCONNECT_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+</manifest>

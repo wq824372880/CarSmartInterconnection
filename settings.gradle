@@ -1,0 +1,13 @@
+rootProject.name='CarSmartInterconnection'
+
+include ':app'
+include ':hicar'
+include ':carlink'
+include ':common'
+include ':net'
+include ':car-api'
+include ':basic-core'
+include ':connect-aidl'
+include ':connect-core'
+include ':connect-lib'
+include ':local-repo:hicarsdk'

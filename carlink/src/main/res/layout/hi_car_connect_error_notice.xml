@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.zeekrlife.carlink.ui.viewmodel.PinViewModel" />
+        <import type="android.view.View"/>
+        <import type="com.zeekrlife.carlink.data.PageType"/>
+    </data>
+
+    <merge tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+        <!--HIcar连接失败 HICAR_CONNECTION_FAILED-->
+        <TextView
+            android:id="@+id/connectConnectErrorLine1"
+            style="@style/HiCarNotice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="178dp"
+            android:layout_marginTop="63dp"
+            android:gravity="center_vertical"
+            android:text="@string/connect_retry_notice"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/connectCodeView" />
+
+        <TextView
+            android:id="@+id/connectConnectErrorLine2"
+            style="@style/HiCarNotice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="178dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical"
+            android:text="@string/connect_usb_failed_notice"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/connectConnectErrorLine1" />
+
+        <TextView
+            android:id="@+id/connectConnectErrorLine3"
+            style="@style/HiCarNotice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="178dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical"
+            android:text="@string/connect_restart_notice"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/connectConnectErrorLine2" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/connectPinErrorGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.pageType == PageType.HICAR_CONNECTION_FAILED ?  View.VISIBLE : View.INVISIBLE}"
+            app:constraint_referenced_ids="connectConnectErrorLine1,connectConnectErrorLine2, connectConnectErrorLine3" />
+    </merge>
+</layout>

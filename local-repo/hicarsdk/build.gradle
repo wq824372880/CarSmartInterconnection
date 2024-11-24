@@ -1,0 +1,2 @@
+configurations.maybeCreate("default")
+artifacts.add("default",file('hicarsdk-android-4.0.0.300-11.7.aar'))

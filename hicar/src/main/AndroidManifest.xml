@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.zeekrlife.hicar">
+    <queries>
+        <package android:name="com.zeekrlife.connect.core" />
+        <package android:name="com.zeekrlife.connect.core.ConnectService" />
+        <package android:name="com.zeekrlife.connect.core.ui.activity.SurfaceActivity" />
+        <intent>
+            <action android:name="zeekrlife.intent.action.INTERCONNECT_SERVICE_START" />
+        </intent>
+    </queries>
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="zeekrlife.permission.INTERCONNECT_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+
+    <uses-permission android:name="android.Manifest.permission.RECORD_AUDIO" />
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+
+    <uses-permission
+        android:name="android.permission.READ_LOGS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <uses-permission
+        android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
+    <uses-permission android:name="android.permission.REORDER_TASKS" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
+
+
+    <uses-sdk tools:overrideLibrary="com.huawei.hicarsdk"/>
+
+    <application
+        android:name="com.zeekrlife.hicar.app.App"
+        android:allowBackup="false"
+        android:icon="@mipmap/hicar"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:largeHeap="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning,UnusedAttribute,LockedOrientationActivity"
+        tools:replace="android:allowBackup">
+        <activity
+            android:name="com.zeekrlife.hicar.ui.activity.MainActivity"
+            android:screenOrientation="landscape"
+            android:exported="true"
+            android:launchMode="singleInstance"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <data
+                    android:host="com.zeekrlife.hicar"
+                    android:scheme="xc" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+
+        </activity>
+        <activity
+            android:name="com.zeekrlife.hicar.ui.activity.LauncherActivity"
+            android:screenOrientation="landscape"
+            android:exported="true"
+            >
+
+        </activity>
+
+        <activity
+            android:name="com.zeekrlife.hicar.ui.activity.EntryActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:multiprocess="true"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+        <provider
+            android:authorities="${applicationId}.HiCarAppListPropertiesProvider"
+            android:name=".provider.HiCarAppListPropertiesProvider"
+            android:exported="true" />
+
+        <meta-data
+            android:name="android.webkit.WebView.EnableSafeBrowsing"
+            android:value="true" />
+
+
+<!--         需要使用到应用的appId、appSecret来做权限校验。可前往ECARX开发者平台（https://open.ecarx.com.cn/#/document/2040）申请appId、appSecret -->
+<!--        <meta-data-->
+<!--                    android:name="eCarX_OpenAPI_AppId"-->
+<!--                    android:value="60f1722613f07a15cd0c8816edbf0729" />-->
+
+<!--        <meta-data-->
+<!--                    android:name="eCarX_OpenAPI_AppKey"-->
+<!--                    android:value="0d8907b0dc12ae5878f0d7dd645eabad" />-->
+    </application>
+
+</manifest>

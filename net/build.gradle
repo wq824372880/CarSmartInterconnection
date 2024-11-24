@@ -1,0 +1,65 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+}
+
+android {
+    compileSdk 33
+
+    defaultConfig {
+        minSdkVersion 26
+        targetSdkVersion 33
+        // dex突破65535的限制
+        multiDexEnabled true
+    }
+    compileOptions {
+        targetCompatibility = "11"
+        sourceCompatibility = "11"
+    }
+
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+
+//    sourceSets {
+//        cs1e {}
+//    }
+
+    // 构建类型，此处配置debug和release版本的一些参数，像混淆、签名配置。
+    buildTypes {
+        debug {
+            debuggable true
+        }
+        uat {
+            debuggable true
+            minifyEnabled true
+            zipAlignEnabled true
+        }
+        // release 包的配置
+        release {
+            debuggable false
+            minifyEnabled true
+            zipAlignEnabled true
+        }
+
+    }
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+    api project(path: ':car-api')
+    api project(path: ':basic-core')
+
+    api "androidx.appcompat:appcompat:1.5.0"
+    api 'androidx.core:core-ktx:1.8.0'
+    //rxHttp
+    api "com.squareup.okhttp3:okhttp:4.10.0"
+    api 'com.github.liujingxing.rxhttp:rxhttp:2.9.2'
+    kapt 'com.github.liujingxing.rxhttp:rxhttp-compiler:2.9.2'
+    //log
+    api "com.github.zhaokaiqiang.klog:library:1.6.0"
+
+
+}

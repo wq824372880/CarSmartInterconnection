@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#85898C</color>
+    <!-- 商城主题背景颜色 -->
+    <color name="theme_main_background_color">@color/md_theme_dark_background</color>
+    <color name="theme_main_dialog_color">#28282E</color>
+    <!-- 文字颜色 -->
+    <color name="theme_main_text_color">@color/md_theme_dark_primary</color>
+    <!-- 分割线颜色 -->
+    <color name="theme_main_divider_color">@color/md_theme_dark_primary</color>
+
+    <!-- 设置页面 -->
+    <color name="setting_bg_color">@color/md_theme_dark_surface</color>
+    <color name="setting_item_bg_color">#28282E</color>
+    <!-- 搜索框颜色40%透明度 -->
+    <color name="search_bg_color">#66E1E3E5</color>
+    <!-- 搜索框填充颜色 light#fff   dark#1A1A20 -->
+    <color name="search_solid_color">#1A1A20</color>
+    <!-- 搜索文字颜色40%透明度 -->
+    <color name="search_text_color">#99E1E3E5</color>
+    <!-- 启动页背景色-->
+    <color name="launcher_bg_color">@color/md_theme_dark_background</color>
+    <!-- 首页tab分割线颜色 -->
+    <color name="theme_home_divider_color">#33E1E3E5</color>
+
+    <!--默认图片背景颜色-->
+    <color name="img_bg_default_large_color">#2C3038</color>
+    <!--banner indicator normal color-->
+    <color name="banner_indicator_normal_color">#4DFFFFFF</color>
+    <!--弹窗背景色-->
+    <color name="theme_main_bg_color">#1C1D21</color>
+    <!--弹窗遮罩背景色-->
+    <color name="theme_main_dialog_mark_color">#66000000</color>
+    <!--弹窗取消按钮-->
+    <color name="theme_dialog_cancel_button_bg_color">#CC282A2F</color>
+    <!--弹窗重连按钮-->
+    <color name="theme_dialog_reconnect_button_bg_color">#CC85898C</color>
+    <!--弹窗重连按钮文字-->
+    <color name="theme_dialog_reconnect_button_text_color">#000000</color>
+    <!--连接码背景色-->
+    <color name="connection_code_bg">#3B3E44</color>
+    <!--连接码布局背景色-->
+    <color name="connection_code_layout_bg">#CC282A2F</color>
+    <!--连接失败标题-->
+    <color name="connection_fail_text_color">#cccccc</color>
+    <!--连接码item颜色-->
+    <color name="connection_code_item_bg">#A65B3A</color>
+</resources>

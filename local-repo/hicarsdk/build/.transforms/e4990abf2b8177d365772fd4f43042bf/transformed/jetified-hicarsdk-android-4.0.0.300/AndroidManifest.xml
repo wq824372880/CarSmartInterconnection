@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.huawei.hicarsdk"
+    android:versionCode="200320"
+    android:versionName="2.0.0.320" >
+
+    <uses-sdk
+        android:minSdkVersion="23"
+        android:targetSdkVersion="24" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="com.huawei.hiviewlite.permission.USE_SERVICE" />
+    <uses-permission android:name="android.permission.LOCAL_MAC_ADDRESS" />
+    <uses-permission android:name="com.huawei.permission.NEARBY_OPERATOR_FUNCTION" />
+
+</manifest>

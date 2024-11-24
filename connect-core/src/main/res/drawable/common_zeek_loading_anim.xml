@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/common_zeek_icon_svg">
+
+    <target
+        android:animation="@animator/ic_zeek_path_animator_one"
+        android:name="ic_zeek_path_one"/>
+
+    <target
+        android:animation="@animator/ic_zeek_path_animator_two"
+        android:name="ic_zeek_path_two" />
+</animated-vector>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">hicarsdk</string>
+    <string name="uuid_seg1">FA87C0D0-AFAC</string>
+    <string name="uuid_seg2">-11DE-8A39-</string>
+    <string name="versionCode" translatable="false">200320</string>
+    <string name="versionName" translatable="false">2.0.0.320</string>
+</resources>

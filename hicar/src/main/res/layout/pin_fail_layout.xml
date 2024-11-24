@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/hiCarTitleTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="142dp"
+            android:text="@string/hi_car_title_name"
+
+
+            android:textColor="@color/primary"
+            android:textSize="64sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <com.zeekrlife.hicar.app.widget.ConnectFailView
+            android:id="@+id/connectFailView"
+            android:layout_width="1660dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="110dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hiCarTitleTV"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:viewBindingIgnore="true" />
+
+
+        <com.zeekr.component.button.ZeekrButton
+            android:id="@+id/pinRetryButton"
+            style="@style/Widget.ZeekrButton.Primary"
+            android:layout_width="440dp"
+            android:layout_height="@dimen/helper.dp.108"
+            android:layout_marginEnd="40dp"
+            android:text="@string/connect"
+            android:textSize="@dimen/helper.sp.36"
+            android:textColor="@color/theme_dialog_reconnect_button_text_color"
+            app:backgroundTint="@color/theme_dialog_reconnect_button_bg_color"
+            app:layout_constraintBottom_toBottomOf="@id/pinCloseButton"
+            app:layout_constraintEnd_toStartOf="@id/pinCloseButton"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.zeekr.component.button.ZeekrButton
+            android:id="@+id/pinCloseButton"
+            style="@style/Widget.ZeekrButton.Minor"
+            android:layout_width="440dp"
+            android:layout_height="@dimen/helper.dp.108"
+            android:text="@string/close"
+            android:textColor="@color/primary"
+            android:textSize="@dimen/helper.sp.36"
+            app:backgroundTint="@color/theme_dialog_cancel_button_bg_color"
+            android:layout_marginBottom="@dimen/helper.dp.140"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/pinRetryButton" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

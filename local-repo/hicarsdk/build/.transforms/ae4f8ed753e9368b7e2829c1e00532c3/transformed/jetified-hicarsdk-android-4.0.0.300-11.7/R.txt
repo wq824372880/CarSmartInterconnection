@@ -1,0 +1,5 @@
+int string app_name 0x7f140001
+int string uuid_seg1 0x7f140002
+int string uuid_seg2 0x7f140003
+int string versionCode 0x7f140004
+int string versionName 0x7f140005

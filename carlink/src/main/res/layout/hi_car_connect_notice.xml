@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.zeekrlife.carlink.ui.viewmodel.PinViewModel" />
+        <import type="android.view.View"/>
+        <import type="com.zeekrlife.carlink.data.PageType"/>
+    </data>
+
+    <merge
+        android:id="@+id/connectNoticeLayout"
+        tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+        <!--//HIcar连接页面 HICAR_CONNECT-->
+        <TextView
+            android:id="@+id/connectNoticeLine1"
+            style="@style/HiCarNotice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="178dp"
+            android:layout_marginTop="63dp"
+            android:drawableStart="@drawable/bluetooth_notice_icon"
+            android:drawablePadding="28dp"
+            android:gravity="center_vertical"
+            android:text="@string/connect_bluetooth_notice"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/connectCodeView" />
+
+        <TextView
+            android:id="@+id/connectNoticeLine2"
+            style="@style/HiCarNotice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="178dp"
+            android:layout_marginTop="28dp"
+            android:drawableStart="@drawable/usb_notice_icon"
+            android:drawablePadding="12dp"
+            android:gravity="center_vertical"
+            android:text="@string/connect_usb_notice"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/connectNoticeLine1" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/connectNoticeGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.pageType == PageType.HICAR_CONNECT ?  View.VISIBLE : View.INVISIBLE}"
+            tools:visibility="visible"
+            app:constraint_referenced_ids="connectNoticeLine1,connectNoticeLine2" />
+    </merge>
+</layout>

@@ -1,0 +1,52 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <!--    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
+    <!--        &lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+    <!--        <item name="colorPrimary">@color/colorPrimary</item>-->
+    <!--        <item name="colorPrimaryDark">@color/colorPrimary</item>-->
+    <!--        <item name="colorAccent">@color/colorAccent</item>-->
+    <!--        <item name="android:windowTranslucentStatus">true</item>-->
+    <!--        &lt;!&ndash; 设置activity切换动画 &ndash;&gt;-->
+    <!--        <item name="android:windowAnimationStyle">@style/activityAnimation</item>-->
+    <!--    </style>-->
+    <style name="AppTheme" parent="ZeekrTheme25">
+        <!-- Customize your theme here. -->
+        <!--        <item name="colorPrimary">@color/colorPrimary</item>-->
+        <!--        <item name="colorPrimaryDark">@color/colorPrimary</item>-->
+        <!--        <item name="colorAccent">@color/colorAccent</item>-->
+        <!--        <item name="android:windowTranslucentStatus">true</item>-->
+        <item name="android:windowBackground">@color/theme_main_background_color</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+
+    <!-- 全屏主题样式 -->
+    <style name="FullScreenTheme" parent="ZeekrTheme25">
+        <item name="android:windowTranslucentStatus">true</item>
+        <!--        <item name="android:windowFullscreen">true</item>-->
+    </style>
+
+
+
+    <!-- 默认水平分割线样式 -->
+    <style name="HorizontalLineStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">#ECECEC</item>
+    </style>
+
+    <!-- 默认垂直分割线样式 -->
+    <style name="VerticalLineStyle">
+        <item name="android:layout_width">1px</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">#ECECEC</item>
+    </style>
+
+    <!--全屏加透明-->
+    <style name="TranslucentFullScreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+</resources>

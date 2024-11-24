@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.zeekrlife.carlink.ui.viewmodel.PinViewModel" />
+        <import type="android.view.View"/>
+        <import type="com.zeekrlife.carlink.data.PageType"/>
+    </data>
+
+    <merge tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+        <!--获取连接码失败 CONNECTION_CODE_GET_FAILED-->
+        <TextView
+            android:id="@+id/connectPinErrorLine1"
+            style="@style/HiCarNotice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.getErrorOrDisConnectContentString()}"
+            android:layout_marginStart="178dp"
+            android:layout_marginTop="63dp"
+            android:gravity="center_vertical"
+            app:layout_constraintTop_toBottomOf="@id/connectCodeView"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/connectPinErrorLine2"
+            style="@style/HiCarNotice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.getErrorOrDisConnectNoticeString()}"
+            android:layout_marginTop="28dp"
+            android:layout_marginStart="178dp"
+            android:gravity="center_vertical"
+            app:layout_constraintTop_toBottomOf="@id/connectPinErrorLine1"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/connectPinErrorGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{(viewModel.pageType == PageType.CONNECTION_CODE_GET_FAILED || viewModel.pageType == PageType.HICAR_DISCONNECT) ?  View.VISIBLE : View.GONE}"
+            app:constraint_referenced_ids="connectPinErrorLine1,connectPinErrorLine2" />
+    </merge>
+</layout>

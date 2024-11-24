@@ -1,0 +1,6 @@
+com.huawei.hicarsdk
+string app_name
+string uuid_seg1
+string uuid_seg2
+string versionCode
+string versionName

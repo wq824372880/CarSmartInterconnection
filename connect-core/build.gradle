@@ -1,0 +1,155 @@
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+
+static String getBuildTime() {
+    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("d MMMM yyyy")
+    LocalDateTime localDateTime = LocalDateTime.now()
+    String date = dateTimeFormatter.format(localDateTime)
+    return "\"${date}\""
+}
+
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+}
+
+//加载签名配置的文件
+Properties props = new Properties()
+props.load(new FileInputStream(file("signing.properties")))
+
+def PKG_NAME = "com.zeekrlife.connect.core"
+
+
+android {
+    compileSdk 33
+    buildToolsVersion = "33.0.2"
+    defaultConfig {
+        applicationId PKG_NAME
+        minSdkVersion 26
+        targetSdkVersion 33
+        versionCode 22
+        versionName '1.2.2'
+        // dex突破65535的限制
+        multiDexEnabled true
+
+        ndk {
+            abiFilters "arm64-v8a"
+        }
+        resConfigs("xhdpi","zh")
+        buildConfigField("String","BuildTime",getBuildTime())
+
+    }
+
+
+    // 签名配置
+    signingConfigs {
+        DefaultConfig {
+            keyAlias props['KEY_ALIAS']
+            keyPassword props['KEY_PASSWORD']
+            storeFile file(props['KEYSTORE_FILE'])
+            storePassword props['KEYSTORE_PASSWORD']
+        }
+    }
+
+
+    buildTypes {
+
+        debug {
+            debuggable true
+            minifyEnabled false
+            shrinkResources false
+            zipAlignEnabled false
+            signingConfig signingConfigs.DefaultConfig
+            resValue("string", "app_name", "CarSmartInterconnection")
+        }
+        uat {
+            debuggable true
+            minifyEnabled true
+            shrinkResources true
+            zipAlignEnabled true
+            signingConfig signingConfigs.DefaultConfig
+            resValue("string", "app_name", "CarSmartInterconnection")
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        release {
+            debuggable false
+            minifyEnabled false
+            shrinkResources false
+            zipAlignEnabled true
+            signingConfig signingConfigs.DefaultConfig
+            resValue("string", "app_name", "CarSmartInterconnection")
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main {
+            aidl.srcDirs = ['src/main/aidl']
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+    }
+    compileOptions {
+        targetCompatibility = "11"
+        sourceCompatibility = "11"
+    }
+
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+
+    // 产品特性
+    buildTypes.all { type ->
+        manifestPlaceholders = [
+                APPLICATION_ID  : PKG_NAME
+        ]
+    }
+    android.applicationVariants.all {
+        variant ->
+            variant.outputs.all {
+                //在这里修改apk文件名
+                outputFileName = "CarSmartInterconnection.apk"
+            }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+}
+
+
+
+dependencies {
+
+    implementation fileTree(dir: 'libs', include: ['*.jar','*.aar'])
+    implementation files('libs/asn1c.analysis.1.0.3.jar')
+    implementation files('libs/ipcp.common.1.0.1.jar')
+    implementation project(path: ':car-api')
+    implementation project(path: ':common')
+    implementation project(path: ':connect-aidl')
+    implementation project(path: ':local-repo:hicarsdk')
+//    implementation files('libs/hicarsdk-android-4.0.0.200.aar')
+    api 'androidx.multidex:multidex:2.0.1'
+    //微信开源项目，替代SP
+    implementation 'com.tencent:mmkv:1.3.0'
+    // 日志打印框架：https://github.com/JakeWharton/timber
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+//    implementation 'com.alibaba:fastjson:1.2.70'
+    implementation 'com.google.zxing:javase:3.2.1'
+    //room
+    annotationProcessor "androidx.room:room-compiler:2.5.0"
+    kapt "androidx.room:room-compiler:2.5.0"
+//    implementation "androidx.core:core-splashscreen:1.1.0-alpha01"
+    //编程方式设置wifi引入
+    implementation 'com.linkedin.dexmaker:dexmaker:2.28.1'
+    //定时器
+    implementation 'com.github.liangjingkanji:Interval:1.0.3'
+
+}
+
+

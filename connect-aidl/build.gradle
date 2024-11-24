@@ -1,0 +1,52 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    compileSdk 33
+    buildToolsVersion = "33.0.2"
+
+    defaultConfig {
+        minSdk 23
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+        }
+        uat {
+            debuggable true
+            minifyEnabled false
+            zipAlignEnabled false
+        }
+        release {
+            debuggable false
+            minifyEnabled false
+            zipAlignEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    aidlPackagedList(
+            "com/zeekrlife/aidl/IConnectService.aidl"
+            , "com/zeekrlife/aidl/IHiCarAppInfo.aidl"
+            , "com/zeekrlife/aidl/IHiCarListener.aidl"
+    )
+    sourceSets {
+        main {
+            java.srcDirs = ['src/main/java', 'src/main/aidl']
+            resources.srcDirs = ['src/main/java', 'src/main/aidl']
+            aidl.srcDirs = ['src/main/aidl']
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    buildFeatures {
+        aidl true
+    }
+    namespace 'com.zeekrlife.aidl'
+}

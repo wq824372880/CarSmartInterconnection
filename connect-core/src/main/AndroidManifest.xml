@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.zeekrlife.connect.core"
+    android:sharedUserId="android.uid.system"
+    >
+    <permission
+        android:name="zeekrlife.permission.INTERCONNECT_SERVICE"
+        android:protectionLevel="normal" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.bluetooth.headsetclient.profile.action.CONNECTION_STATE_CHANGED" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.READ_LOGS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN"/>
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_PRIVILEGED"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.LOCAL_MAC_ADDRESS"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.Manifest.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+    <!-- WiFi AP startTethering -->
+    <uses-permission android:name="android.permission.TETHER_PRIVILEGED" />
+    <uses-permission android:name="android.permission.GET_PACKAGE_SIZE" />
+    <uses-permission android:name="android.permission.CLEAR_APP_CACHE" />
+
+
+<!--    android:persistent="true"  发布的时候要加到application后续-->
+    <application
+        android:extractNativeLibs="true"
+        android:name=".app.App"
+        android:allowBackup="false"
+        android:label="@string/app_name"
+        android:enabled="true"
+        android:requestLegacyExternalStorage="true"
+        android:theme="@style/ZeekrTheme26.CarSmartApp">
+        <activity
+            android:name="com.zeekrlife.connect.core.ui.activity.EntryActivity"
+            android:screenOrientation="landscape"
+            android:exported="true"
+            >
+
+        </activity>
+        <activity
+            android:name="com.zeekrlife.connect.core.ui.activity.ProtocolActivity"
+            android:screenOrientation="landscape"
+            android:exported="false"
+            android:launchMode="singleInstance"
+            >
+        </activity>
+
+        <activity
+            android:name="com.zeekrlife.connect.core.ui.activity.SurfaceActivity"
+            android:screenOrientation="landscape"
+            android:exported="true"
+            android:launchMode="singleInstance"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+
+                <data
+                    android:host="com.zeekrlife.connect.core"
+                    android:scheme="xc" />
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity>
+        <service
+            android:name="com.zeekrlife.connect.core.ConnectService"
+            android:exported="true"
+            android:enabled="true"
+            android:launchMode="singleTask"
+            android:permission="zeekrlife.permission.INTERCONNECT_SERVICE">
+
+            <intent-filter>
+                <action android:name="zeekr.intent.action.ConnectService_SERVICE_START" />
+                <action android:name="zeekrlife.intent.action.INTERCONNECT_SERVICE_START" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.zeekr.platform.service.intent.action.SUPPORT_SERVICE" />
+                <category android:name="com.zeekr.platform.service.category.interconnection"/>
+            </intent-filter>
+            <meta-data
+                android:name="com.zeekr.platform.service.provider"
+                android:resource="@xml/service_config_zeekr"
+                android:value="interconnection"/>
+        </service>
+        <receiver
+                    android:name="com.zeekrlife.connect.core.receiver.BootReceiver"
+                    android:enabled="true"
+                    android:exported="true"
+                    android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+                    <intent-filter>
+                        <action android:name="android.intent.action.BOOT_COMPLETED" />
+                        <category android:name="android.intent.category.HOME" />
+                    </intent-filter>
+        </receiver>
+        <provider
+            android:authorities="${applicationId}.HiCarAppListPropertiesProvider"
+            android:name=".provider.HiCarAppListPropertiesProvider"
+            android:exported="true" />
+        <provider
+            android:authorities="${applicationId}.androidx-startup"
+            android:name="androidx.startup.InitializationProvider"
+            tools:node="remove" />
+    </application>
+</manifest>

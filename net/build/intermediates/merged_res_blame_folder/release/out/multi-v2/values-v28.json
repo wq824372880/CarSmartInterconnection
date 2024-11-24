@@ -1,0 +1,36 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.zeekrlife.net-merged_res-27:/values-v28/values-v28.xml",
+            "map": [
+                {
+                    "source": "/Users/mac/.gradle/caches/transforms-3/a76005f132c42de2f6480841664fc3d5/transformed/appcompat-1.5.0/res/values-v28/values-v28.xml",
+                    "from": {
+                        "startLines": "2,3,4,8",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,130,217,397",
+                        "endLines": "2,3,7,11",
+                        "endColumns": "74,86,12,12",
+                        "endOffsets": "125,212,392,584"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "com.zeekrlife.net-mergeReleaseResources-25:/values-v28/values-v28.xml",
+            "map": [
+                {
+                    "source": "/Users/mac/.gradle/caches/transforms-3/a76005f132c42de2f6480841664fc3d5/transformed/appcompat-1.5.0/res/values-v28/values-v28.xml",
+                    "from": {
+                        "startLines": "2,3,4,8",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,130,217,397",
+                        "endLines": "2,3,7,11",
+                        "endColumns": "74,86,12,12",
+                        "endOffsets": "125,212,392,584"
+                    }
+                }
+            ]
+        }
+    ]
+}

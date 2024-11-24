@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/ctl_layout"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:background="@drawable/bg_launcher"
+        tools:ignore="MissingPrefix"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctl_protocol"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_bg_zeekr"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5"
+                android:textSize="475sp"
+                android:textStyle="bold"
+                android:text="ZEEKR"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_title"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.31"
+                android:text="@string/huawei_hicar_disclaimer"
+                android:textStyle="bold"
+                android:textColor="@color/theme_main_text_color"
+                android:textSize="64sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_content"
+                android:layout_width="match_parent"
+                app:layout_constraintWidth_percent="0.68"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:lineSpacingExtra="@dimen/dp.6"
+                android:layout_marginTop="@dimen/dp.70"
+                android:text="@string/privacy"
+                android:textColor="@color/theme_main_divider_color"
+                android:textSize="24sp"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:gravity="center_horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+            <com.zeekr.component.button.ZeekrButton
+                android:id="@+id/tv_cancel"
+                style="@style/Widget.ZeekrButton.OutlinedButton.Border"
+                android:layout_width="@dimen/dp.320"
+                android:layout_height="@dimen/dp.64"
+                android:layout_marginTop="56dp"
+                android:text="@string/cancel"
+                android:textSize="@dimen/dp.24"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.38"
+                app:layout_constraintHorizontal_chainStyle="packed"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_content" />
+
+            <com.zeekr.component.button.ZeekrButton
+                android:id="@+id/tv_confirm"
+                style="@style/Widget.ZeekrButton.Primary"
+                android:layout_width="@dimen/dp.320"
+                android:layout_height="@dimen/dp.64"
+                android:layout_marginTop="56dp"
+                android:layout_marginEnd="312dp"
+                android:text="@string/agree_countdown"
+                android:textSize="@dimen/dp.24"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/tv_content"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintTop_toBottomOf="@+id/tv_content" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

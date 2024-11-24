@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service-config xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>interconnection</name>
+    <priority>2000</priority>
+    <type>1</type>
+    <version>100</version>
+    <secret-list>
+        <secret>V7FoTgr8chjxEjCmdEB7RvJ/PfiqwrQwSdlYHPyVvQymsJ05d5N2974rGVHO6QlXpxnw+v5uYjJ5fMyqI8r6J1ulLT8+PVExLrQaUnAHnaWoBZvOZitbgVt56k4NAgPe4Yl+7bq5IYPrfbvQY3Rm+LfGW5qzYqiQhAgL1BJwBVw=</secret>
+    </secret-list>
+</service-config>

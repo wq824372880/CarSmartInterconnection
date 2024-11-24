@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/hiCarTitleTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="142dp"
+            android:text="@string/hi_car_title_name_with_code"
+            android:textColor="@color/primary"
+            android:textSize="64sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="240dp" />
+        <com.zeekrlife.hicar.app.widget.ConnectCodeView
+            android:id="@+id/connectCodeView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="110dp"
+            app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+            app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@+id/hiCarTitleTV"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:viewBindingIgnore="true" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="900dp" />
+
+        <ImageView
+            android:id="@+id/connectDescribeIV"
+            android:layout_width="667dp"
+            android:layout_height="691dp"
+            android:layout_marginEnd="141dp"
+            android:src="@drawable/ic_connect_describe"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/connectCodeView"
+            app:layout_constraintTop_toTopOf="@+id/connectCodeView" />
+
+        <TextView
+            android:id="@+id/connectNoticeLine1"
+            style="@style/HiCarNotice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp.80"
+            android:gravity="center_vertical"
+            android:text="@string/connect_bluetooth_notice"
+            app:layout_constraintEnd_toEndOf="@id/connectCodeView"
+            app:layout_constraintStart_toStartOf="@id/connectCodeView"
+            app:layout_constraintTop_toBottomOf="@+id/connectCodeView" />
+        <TextView
+            android:id="@+id/connectNoticeLine2"
+            style="@style/HiCarNotice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp.16"
+            android:gravity="center_vertical"
+            android:text="@string/connect_bluetooth_notice2"
+            app:layout_constraintEnd_toEndOf="@id/connectCodeView"
+            app:layout_constraintStart_toStartOf="@id/connectCodeView"
+            app:layout_constraintTop_toBottomOf="@+id/connectNoticeLine1" />
+        <com.zeekr.component.button.ZeekrButton
+            android:id="@+id/pinRetryButton"
+            style="@style/Widget.ZeekrButton.Primary"
+            android:layout_width="440dp"
+            android:layout_height="@dimen/helper.dp.108"
+            android:layout_marginEnd="40dp"
+            android:text="@string/retry"
+            android:textSize="@dimen/helper.sp.36"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/pinCloseButton"
+            app:layout_constraintEnd_toStartOf="@id/pinCloseButton"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.zeekr.component.button.ZeekrButton
+            android:id="@+id/pinCloseButton"
+            style="@style/Widget.ZeekrButton.Minor"
+            android:layout_width="440dp"
+            android:layout_height="@dimen/helper.dp.108"
+            android:text="@string/close"
+            android:textColor="@color/primary"
+            android:textSize="@dimen/helper.sp.36"
+            app:backgroundTint="@color/connection_code_layout_bg"
+            android:layout_marginBottom="@dimen/helper.dp.140"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/pinRetryButton" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/code_loading"
+            android:background="@color/theme_main_background_color"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+                <ProgressBar
+                    android:id="@+id/loadingPB"
+                    android:layout_width="170dp"
+                    android:layout_height="170dp"
+                    android:indeterminateBehavior="repeat"
+                    android:indeterminateDrawable="@drawable/loading_anim"
+                    app:layout_constraintBottom_toBottomOf="@id/loadingIV"
+                    app:layout_constraintStart_toStartOf="@id/loadingIV"
+                    app:layout_constraintEnd_toEndOf="@id/loadingIV"
+                    app:layout_constraintVertical_chainStyle="packed"/>
+                <ImageView
+                    android:id="@+id/loadingIV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/ic_bluetooth_loading"
+                    android:visibility="invisible"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/loadingContentTV"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed"/>
+
+                <TextView
+                    android:id="@+id/loadingContentTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="连接码获取中..."
+                    android:layout_marginTop="86dp"
+                    android:textColor="@color/primary"
+                    android:textSize="64sp"
+                    app:layout_constraintStart_toStartOf="@+id/loadingIV"
+                    app:layout_constraintEnd_toEndOf="@id/loadingIV"
+                    app:layout_constraintBottom_toTopOf="@id/loadingNoticeTV"
+                    app:layout_constraintTop_toBottomOf="@id/loadingIV" />
+
+                <TextView
+                    android:id="@+id/loadingNoticeTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="HUAWEI HiCar 无线连接过程需要使用连接码"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/primary"
+                    android:textSize="32sp"
+                    android:alpha="0.6"
+                    app:layout_constraintStart_toStartOf="@+id/loadingIV"
+                    app:layout_constraintEnd_toEndOf="@id/loadingIV"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/loadingContentTV" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

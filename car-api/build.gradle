@@ -1,0 +1,56 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+}
+
+android {
+    compileSdk 33
+
+    defaultConfig {
+        minSdkVersion 26
+        targetSdkVersion 33
+
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled false
+        }
+        uat {
+            debuggable true
+            minifyEnabled true
+            zipAlignEnabled true
+        }
+        release {
+            debuggable false
+            minifyEnabled true
+            zipAlignEnabled true
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+    api fileTree(dir: 'libs/zeekrapi', include: ['*.jar'])
+    api fileTree(dir: 'libs/openapi', include: ['*.jar'])
+
+    implementation project(path: ':basic-core')
+
+    api project(path: ':basic-core')
+    implementation files('libs/zeekrapi/zeekr-sdk-base-1.0.3.jar')
+    implementation files('libs/zeekrapi/zeekr-sdk-mediacenter-1.0.14.jar')
+    implementation files('libs/zeekrapi/zeekr-sdk-vr-1.0.5.jar')
+    implementation files('libs/zeekrapi/zeekr-sdk-policy-1.0.2.jar')
+}

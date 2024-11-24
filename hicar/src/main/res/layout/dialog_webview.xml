@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/theme_main_dialog_color"
+    android:layout_width="@dimen/dp.1208"
+    android:layout_height="@dimen/dp.600">
+
+    <com.just.agentweb.AgentWebView
+        android:id="@+id/agent_web_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp.320"
+        android:fadingEdge="none"
+        android:fadingEdgeLength="30dp"
+        android:overScrollMode="never"
+        android:requiresFadingEdge="vertical"
+        android:background="@color/theme_main_dialog_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+
+    </com.just.agentweb.AgentWebView>
+    <LinearLayout
+        android:background="@color/theme_main_dialog_color"
+        android:visibility="gone"
+        android:id="@+id/layout_loading"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal"
+        android:layout_height="@dimen/dp.320"
+        android:orientation="vertical">
+
+        <com.zeekrlife.common.widget.state.ZeekrLoadingView
+            android:layout_marginTop="-8dp"
+            android:id="@+id/lottie_view"
+            android:layout_width="280dp"
+            android:layout_height="280dp"
+            app:lottie_repeatCount="-1"
+            app:lottie_repeatMode="restart" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_marginTop="-35dp"
+            android:id="@+id/tv_loading_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="加载中..."
+            android:alpha=".6"
+            android:textColor="@color/theme_btn_text_color"
+            android:textSize="@dimen/helper.dp.24" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/layout_error"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp.320"
+        android:gravity="center"
+        android:background="@color/theme_main_dialog_color"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/state_error_img"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/load_error" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/state_error_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/helper.dp.30"
+            android:layout_marginBottom="@dimen/helper.dp.12"
+            android:text="@string/helper_loading_error_tip"
+            android:textColor="@color/theme_btn_text_color"
+            android:textSize="@dimen/helper.dp.24" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
