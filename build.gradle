@@ -1,0 +1,50 @@
+buildscript {
+    repositories {
+            maven { url 'https://jitpack.io' }
+            maven { url 'https://maven.aliyun.com/repository/public' }
+            maven { url 'https://maven.aliyun.com/repository/central' }
+            maven { url 'https://maven.aliyun.com/repository/google' }
+            maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:7.4.1"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0"
+        classpath 'io.github.wurensen:gradle-android-plugin-aspectjx:3.3.2'
+    }
+}
+
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven {
+            url 'https://devops-maven.zeekrlife.com/repository/snc-release'
+            credentials {
+                username = 'deployment'//deployment
+                password = 'Dmj97e7hyZjC'//dev!@#$23432
+            }
+        }
+        maven {
+            url 'https://devops-maven.zeekrlife.com/repository/snc-snapshot/'
+            credentials {
+                username = 'deployment' //deployment
+                password = 'Dmj97e7hyZjC' //dev!@#$23432
+            }
+        }
+    }
+}
+allprojects {
+    configurations.configureEach {
+        resolutionStrategy {
+            force "commons-io:commons-io:2.11.0"
+            force "commons-codec:commons-codec:20041127.091804"
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
